@@ -1,0 +1,42 @@
+.dice {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  margin: 20px;
+  vertical-align: middle;
+}
+
+.die::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.die-1::after {
+  content: '⚀';
+}
+
+.die-2::after {
+  content: '⚁';
+}
+
+.die-3::after {
+  content: '⚂';
+}
+
+.die-4::after {
+  content: '⚃';
+}
+
+.die-5::after {
+  content: '⚄';
+}
+
+.die-6::after {
+  content: '⚅';
+}
