@@ -12,7 +12,6 @@ function DiceRoller() {
 
   return (
     <div>
-      <h1>Dice Roller</h1>
       <div>
         <div className={`dice die-${dice1}`}></div>
         <div className={`dice die-${dice2}`}></div>
