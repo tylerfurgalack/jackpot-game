@@ -1,17 +1,21 @@
 import './LettersNumbers.css';
 
-const LettersNumbers = () => {
+const LettersNumbers = ({ dice1, dice2, sum }) => {
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   return (
     <div className="empty-boxes-container">
-      <div className="empty-box">1</div>
-      <div className="empty-box">2</div>
-      <div className="empty-box">3</div>
-      <div className="empty-box">4</div>
-      <div className="empty-box">5</div>
-      <div className="empty-box">6</div>
-      <div className="empty-box">7</div>
-      <div className="empty-box">8</div>
-      <div className="empty-box">9</div>
+      {numbers.map((num) => {
+        const isHighlighted = num === dice1 || num === dice2 || num === sum;
+        return (
+          <div
+            key={num}
+            className={`empty-box ${isHighlighted ? 'highlighted-box' : ''}`}
+          >
+            {num}
+          </div>
+        );
+      })}
     </div>
   );
 };
