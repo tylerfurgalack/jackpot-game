@@ -31,3 +31,7 @@
   text-align: center; /* Center text horizontally */
   line-height: 1.5; /* Center text vertically */
 }
+.selected-box {
+  color: red;
+  font-weight: bold;
+}

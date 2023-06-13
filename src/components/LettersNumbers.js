@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import './LettersNumbers.css';
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const jackpot = ['.', 'J', 'A', 'C', 'K', 'P', 'O', 'T', '.'];
 
-const LettersNumbers = ({ dice1, dice2, sum }) => {
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const LettersNumbers = ({ dice1, dice2, sum, choiceMade, setChoiceMade }) => {
   const [selectedNumbers, setSelectedNumbers] = useState([]);
 
   const handleClick = (num) => {
-    if (selectedNumbers.includes(num)) {
-      // Deselect the number if it's already selected
-      setSelectedNumbers(
-        selectedNumbers.filter((selectedNum) => selectedNum !== num)
-      );
-    } else {
-      // Select the number if it's clicked
-      setSelectedNumbers([...selectedNumbers, num]);
-    }
+    setSelectedNumbers([...selectedNumbers, num]);
+    setChoiceMade(true);
   };
 
   return (
@@ -24,15 +18,16 @@ const LettersNumbers = ({ dice1, dice2, sum }) => {
         const isSelected = selectedNumbers.includes(num);
 
         return (
-          <div
+          <button
             key={num}
-            className={`empty-box ${isHighlighted ? 'highlighted-box' : ''} ${
-              isSelected ? 'selected-box' : ''
-            }`}
+            className={`empty-box ${
+              isHighlighted && !isSelected ? 'highlighted-box' : ''
+            } ${isSelected ? 'selected-box' : ''}`}
             onClick={() => handleClick(num)}
+            disabled={isSelected || !isHighlighted || choiceMade}
           >
-            {isSelected ? 'x' : num}
-          </div>
+            {isSelected ? jackpot[num - 1] : num}
+          </button>
         );
       })}
     </div>

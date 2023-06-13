@@ -7,15 +7,13 @@ function DiceRoller() {
   const [dice2, setDice2] = useState(1);
   const sum = dice1 + dice2;
   const [choice, setChoice] = useState(null);
+  const [choiceMade, setChoiceMade] = useState(false);
 
   const rollDice = () => {
     setDice1(Math.floor(Math.random() * 6) + 1);
     setDice2(Math.floor(Math.random() * 6) + 1);
     setChoice(null); // Reset choice when dice values change
-  };
-
-  const handleChoice = (num) => {
-    setChoice(num);
+    setChoiceMade(false);
   };
 
   return (
@@ -25,7 +23,8 @@ function DiceRoller() {
         dice2={dice2}
         sum={sum}
         choice={choice}
-        handleChoice={handleChoice}
+        choiceMade={choiceMade}
+        setChoiceMade={setChoiceMade}
       />
       <div className={`dice die-${dice1}`}></div>
       <div className={`dice die-${dice2}`}></div>
